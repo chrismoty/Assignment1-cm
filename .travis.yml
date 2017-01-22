@@ -53,7 +53,7 @@ script:
     which clang-format-3.8 > /dev/null
     && find .
     -regex '.*\.\(h\|cpp\)'
-    -exec clang-format-3.8 -i $([[ -e .clang-format ]] || echo "-style=webkit") {} \;
+    -exec clang-format-3.8 -i -style=file {} \;
     || { return 0; }
     && git diff-files --quiet
     || {
