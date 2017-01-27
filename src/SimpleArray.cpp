@@ -48,5 +48,6 @@ bool SimpleArray::isNonNull() const{
 
 //reset
 void SimpleArray::reset(AllocationTracker* allocTrack){
-    SimpleArray::SimpleArray(allocTrack);
+    SimpleArray A(allocTrack);
+    mArray = 0;
 }
