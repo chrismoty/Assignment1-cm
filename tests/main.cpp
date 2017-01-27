@@ -2,6 +2,7 @@
  *  Test driver for SimpleArray. This driver aims to exercise all of the
  *  functionality of the SimpleArray in a clear and consistent way so that 
  *  the class's interface can be easily inferred.
+ *  test
  */
 
 #include <gtest/gtest.h>
