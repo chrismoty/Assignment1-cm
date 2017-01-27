@@ -68,3 +68,8 @@ void SimpleArray::swap(SimpleArray A){
     mArray = A.mArray;
     A.mArray = tmp;
 }
+
+//release
+void SimpleArray::release(){
+
+}

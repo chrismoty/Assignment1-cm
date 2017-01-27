@@ -64,7 +64,7 @@ public:
     void swap(SimpleArray A);
 
     //release
-
+    void release();
 
 private:
     /*** Maybe some things here ***/
