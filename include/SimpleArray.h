@@ -1,11 +1,3 @@
-/*
- * Starter code for Assignment 1.  Finish the definition of the SimpleArray class and then build out
- * the implementation.
- * Make sure to use the provided test cases to properly understand what needs to be developed.
- */
-
-
-
 // File name: SimpleArray.h
 // Name: Chris Motyczka
 // VUnetid: motyczcr
