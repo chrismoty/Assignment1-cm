@@ -1,0 +1,80 @@
+language: cpp
+sudo: false
+
+matrix:
+  allow_failures:
+    - env_compiler: gcc-6
+
+  include:
+    - os: linux
+      env_compiler: clang-3.8
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - llvm-toolchain-precise-3.8
+            - george-edison55-precise-backports
+          packages:
+            - clang-3.8
+            - clang-format-3.8
+            - cmake-data
+            - cmake
+      env:
+        - MATRIX_EVAL="CC=clang-3.8 && CXX=clang++-3.8"
+
+    - os: linux
+      env_compiler: gcc-6
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+            - george-edison55-precise-backports
+          packages:
+            - g++-6
+            - cmake-data
+            - cmake
+      env:
+        - MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+
+before_install:
+  # update envvar config
+  - eval $MATRIX_EVAL
+
+  # report versions
+  - cmake --version
+  - $CXX --version
+
+install:
+  # setup cmake
+  - mkdir bin
+
+script:
+  - >
+    which clang-format-3.8 > /dev/null
+    && find .
+    -regex '.*\.\(h\|cpp\)'
+    -exec clang-format-3.8 -i $([[ -e .clang-format ]] || echo "-style=webkit") {} \;
+    || { return 0; }
+    && git diff-files --quiet
+    || {
+      for i in {{1..80}}; do echo -n = ; done
+      echo
+      echo "The following files don't meet the style guidelines:"
+      git diff --name-only | sed "s/^/ - /"
+      for i in {{1..80}}; do echo -n = ; done
+      echo
+      return 1
+    }
+
+  - >
+    cd bin
+    && cmake ..
+    && make
+    && echo "Executing compiled binaries:"
+    && { ./testing; }
+
+after_success:
+  - echo "Yay! Your code meets the style standards, compiled and runs fine."
+
+after_failure:
+  - echo "Uh-oh - something is wrong with your code! (Does it meet the style guidelines?)"
