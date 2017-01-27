@@ -13,7 +13,9 @@ class SimpleArrayTest : public ::testing::Test {
 
 TEST_F(SimpleArrayTest, Destructor)
 {
-    EXPECT_NO_THROW({ SimpleArray array(new AllocationTracker[100]); });
+    EXPECT_NO_THROW({
+        SimpleArray array(new AllocationTracker[100]);
+    });
     EXPECT_NO_THROW({
         SimpleArray a1(new AllocationTracker[100]);
         SimpleArray a2(new AllocationTracker[100]);
