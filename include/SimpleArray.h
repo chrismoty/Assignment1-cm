@@ -3,6 +3,15 @@
  * Make sure to use the provided test cases to properly understand what needs to be developed.
  */
 
+// File name: SimpleArray.h
+// Name: Chris Motyczka
+// VUnetid: motyczcr
+// Email: christian.r.motyczka@vanderbilt.edu
+// Class: CS3251
+// Assignment Number: 1
+// Honor statement: I have neither given nor received unauthorized aid on this assignment
+// Last Changed: 1/26/17
+
 #ifndef SIMPLE_ARRAY_H
 #define SIMPLE_ARRAY_H
 
@@ -47,6 +56,15 @@ public:
 
     //reset
     void reset(AllocationTracker* allocTrack);
+
+    //Alt reset (no parameters)
+    void reset();
+
+    //swap
+    void swap(SimpleArray A);
+
+    //release
+
 
 private:
     /*** Maybe some things here ***/
