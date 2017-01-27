@@ -70,6 +70,6 @@ void SimpleArray::swap(SimpleArray A){
 }
 
 //release
-void SimpleArray::release(){
-
+AllocationTracker* SimpleArray::release(){
+    return mArray;
 }
